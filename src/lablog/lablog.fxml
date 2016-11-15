@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="415.0" prefWidth="335.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lablog.LabLogController">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#logStudent" prefHeight="27.0" prefWidth="85.0" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="txtId" onAction="#logStudent" GridPane.rowIndex="2" />
+      <Label text="Student ID:" GridPane.rowIndex="1" />
+      <Label fx:id="lblInfo" GridPane.rowIndex="3">
+         <GridPane.margin>
+            <Insets top="-5.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="10.0" />
+         </font></Label>
+      <ImageView fitHeight="140.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+         <GridPane.margin>
+            <Insets bottom="20.0" />
+         </GridPane.margin>
+         <image>
+            <Image url="@logo.png" />
+         </image></ImageView>
+      <Label prefHeight="17.0" prefWidth="259.0" text="Students Logged In:" GridPane.columnSpan="2" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets top="15.0" />
+         </GridPane.margin></Label>
+      <ComboBox prefHeight="27.0" prefWidth="265.0" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="170.0" text="Log Student Out" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets bottom="10.0" top="5.0" />
+         </GridPane.margin></Button>
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="85.0" text="Admin" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <GridPane.margin>
+            <Insets bottom="10.0" top="5.0" />
+         </GridPane.margin></Button>
+   </children>
+</GridPane>
