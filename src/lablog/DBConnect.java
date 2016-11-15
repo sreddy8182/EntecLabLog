@@ -85,6 +85,23 @@ public class DBConnect {
         return false;
     }
 
+    public boolean closeConnection() {
+        // attempt to close database connection
+        try {
+            // close
+            connection.close();
+
+            // success
+            return true;
+        } catch (Exception e) {
+            // log
+            System.out.println("Error: " + e.getMessage());
+
+            // return error
+            return false;
+        }
+    }
+
     public int logIn(String strId) {
         // declare id
         int id = 0;
