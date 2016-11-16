@@ -18,28 +18,23 @@ public class LabLogController {
     public Label lblInfo;
 
     // alert views
-    public Stage alertWindow;
+    private Stage alertWindow;
     public Button btnYes;
     public Button btnNo;
     public Label lblMessage;
-
-    // fields
-    public DBConnect dbConnect;
 
     // constants
     private static final int SIZE_ONE = 9;
     private static final int SIZE_TWO = 10;
 
     // constructor
-    public LabLogController() {
-        // establish connection to database
-        dbConnect = new DBConnect();
+    LabLogController() {
     }
 
     // btnSubmit event handler
     public void logStudent() {
         // declare status
-        int status = 0;
+        int status;
 
         // get id from label
         String strId = txtId.getText();
@@ -49,7 +44,7 @@ public class LabLogController {
                 (strId.length() == SIZE_TWO && checkForm(strId, false))) {
             // attempt to log student in
             // database error 0
-            if ((status = dbConnect.logIn(strId)) == 0) {
+            if ((status = Main.dbConnect.logIn(strId)) == 0) {
                 // show database error to user
                 infoMessage("Database Error", Color.RED);
             }
@@ -66,9 +61,11 @@ public class LabLogController {
             // student is logged in -2
             else if (status == -2) {
                 // log the student out
-                if (dbConnect.logOut(strId) == 1) {
+                if (Main.dbConnect.logOut(strId) == 1) {
                     // show logout confirmation
                     infoMessage("Logged out Successfully", Color.BLUE);
+
+                    txtId.setText(""); // clear
                 } else {
                     // show database error to user
                     infoMessage("Database Error", Color.RED);
@@ -79,14 +76,15 @@ public class LabLogController {
             else if (status == 1) {
                 // show login confirmation
                 infoMessage("Logged in Successfully", Color.GREEN);
+
+                txtId.setText(""); // clear
             }
         } else {
             // show invalid input error to user
             infoMessage("Invalid Format", Color.RED);
-        }
 
-        // clear text field
-        txtId.setText("");
+            txtId.setText(""); // clear
+        }
     }
 
     // write info message
@@ -98,12 +96,12 @@ public class LabLogController {
 
     // change scene
     private boolean register() {
-        // declare layout
+        // declare layout and id
         Parent layout;
+        String id = txtId.getText();
 
         // create controller
         RegisterController registerController = new RegisterController();
-        registerController.setStrId(txtId.getText());
 
         // initialize loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("register.fxml"));
@@ -116,6 +114,10 @@ public class LabLogController {
 
             // change scene to registration
             Main.window.setScene(new Scene(layout, 335, 415));
+
+            // pass id to new scene and setup
+            registerController.txtId.setText(id);
+            registerController.setupViews();
 
             // return success
             return true;
@@ -157,7 +159,7 @@ public class LabLogController {
 
     private boolean displayAlert(String title, String message) {
         // fields
-        Parent layout = null;
+        Parent layout;
 
         // make loader and set controller
         FXMLLoader loader = new FXMLLoader(getClass().getResource("alert.fxml"));

@@ -179,7 +179,10 @@ public class DBConnect {
         // attempt to execute query
         try {
             // execute query
-            return statement.execute(query);
+            statement.execute(query);
+
+            // return success
+            return true;
         } catch (Exception e) {
             // log error
             System.out.println("Error: " + e.getMessage());

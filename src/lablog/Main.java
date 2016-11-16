@@ -15,8 +15,15 @@ public class Main extends Application {
     public static Stage window;
     public static LabLogController labLogController;
 
+    // fields
+    static DBConnect dbConnect;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // establish connection to database
+        dbConnect = new DBConnect();
+
+        // hold reference to main stage
         window = primaryStage;
 
         // create instance of controller
@@ -39,7 +46,7 @@ public class Main extends Application {
         window.setResizable(false);
         window.setOnCloseRequest(e -> {
             // close db connection
-            labLogController.dbConnect.closeConnection();
+            dbConnect.closeConnection();
         });
 
         // show the window
