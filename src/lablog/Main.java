@@ -4,16 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import lablog.tables.Student;
 
 public class Main extends Application {
     // rename stage to window
-    public static Stage window;
-    public static LabLogController labLogController;
+    static Stage window;
+    static LabLogController labLogController;
 
     // fields
     static DBConnect dbConnect;
@@ -51,6 +47,9 @@ public class Main extends Application {
 
         // show the window
         window.show();
+
+        // load combo box
+        labLogController.loadLoggedIn();
     }
 
     public static void main(String[] args) {

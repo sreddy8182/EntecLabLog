@@ -46,15 +46,16 @@ public class RegisterController {
                 back();
 
                 // inform user
-                Main.labLogController.lblInfo.setText("Registered & Logged in Successfully");
-                Main.labLogController.lblInfo.setTextFill(Color.GREEN);
+                Main.labLogController.infoMessage("Registered & Logged in Successfully", Color.GREEN);
+
+                // load combo box
+                Main.labLogController.loadLoggedIn();
             } else if (registered) {
                 // change back to lablog
                 back();
 
                 // inform user
-                Main.labLogController.lblInfo.setText("Registered Successfully");
-                Main.labLogController.lblInfo.setTextFill(Color.GREEN);
+                Main.labLogController.infoMessage("Registered Successfully", Color.GREEN);
             }
         }
     }

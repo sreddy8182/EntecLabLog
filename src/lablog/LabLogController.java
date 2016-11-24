@@ -1,18 +1,28 @@
 package lablog;
 
+import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lablog.tables.Student;
+
+import java.util.ArrayList;
+import java.util.Timer;
 
 /// log class controller, holds the logic for signing in and out
 public class LabLogController {
     // views
+    public ComboBox<String> lstStudents;
     public Button btnSubmit;
     public TextField txtId;
     public Label lblInfo;
@@ -30,6 +40,40 @@ public class LabLogController {
     // constructor
     LabLogController() {
     }
+
+    // load logged in students
+    boolean loadLoggedIn() {
+        // declare array list
+        ArrayList<Student> students;
+
+        // attempt to get all logged in from database
+        if ((students = Main.dbConnect.getLoggedIn()) == null){
+            // its either empty or error
+            // make combo empty
+            lstStudents.setItems(FXCollections.observableList(new ArrayList<String>(0)));
+
+            // return error
+            return false;
+        }
+
+        // make list
+        ArrayList<String> list = new ArrayList<>();
+
+        // get all strId for every id
+        for (int i = 0; i < students.size(); i++) {
+            list.add(students.get(i).getFirstName() + " " + students.get(i).getLastName().charAt(0) + " - " + students.get(i).getStrId());
+        }
+
+        // make observable list
+        ObservableList<String> oList = FXCollections.observableList(list);
+
+        // add list to combo box
+        lstStudents.setItems(oList);
+
+        // success
+        return true;
+    }
+
 
     // btnSubmit event handler
     public void logStudent() {
@@ -79,6 +123,9 @@ public class LabLogController {
 
                 txtId.setText(""); // clear
             }
+
+            // load students to combo box
+            loadLoggedIn();
         } else {
             // show invalid input error to user
             infoMessage("Invalid Format", Color.RED);
@@ -88,10 +135,26 @@ public class LabLogController {
     }
 
     // write info message
-    private void infoMessage(String message, Paint paint) {
+    void infoMessage(String message, Paint paint) {
         // add message and color
         lblInfo.setText(message);
         lblInfo.setTextFill(paint);
+
+        // clear label after ten seconds
+        new Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        // clear on javafx ui thread
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                lblInfo.setText(""); // clear
+                            }
+                        });
+                    }
+                },
+                10000 // 10 seconds
+        );
     }
 
     // change scene
@@ -185,6 +248,9 @@ public class LabLogController {
         alertWindow.setResizable(false);
         alertWindow.setAlwaysOnTop(true);
         alertWindow.setTitle(title);
+
+        // no other stage can not receive events
+        alertWindow.initModality(Modality.APPLICATION_MODAL);
 
         // show window and request focus
         alertWindow.show();

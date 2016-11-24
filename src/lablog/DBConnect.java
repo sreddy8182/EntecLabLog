@@ -15,7 +15,7 @@ public class DBConnect {
     private ResultSet resultSet;
 
     // constructor
-    public DBConnect() {
+    DBConnect() {
         // attempt to access external library
         try {
             // give it the class name
@@ -26,12 +26,12 @@ public class DBConnect {
             statement = connection.createStatement();
         } catch (Exception e) {
             // print error to console
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Connection Error: " + e.getMessage());
         }
     }
 
     // methods
-    private int findId(String strId) {
+    int findId(String strId) {
         // attempt to find id
         try {
             // form query
@@ -49,7 +49,7 @@ public class DBConnect {
             }
         } catch (Exception e) {
             // print error
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Find Id Error: " + e.getMessage());
 
             // return error
             return -1;
@@ -67,7 +67,7 @@ public class DBConnect {
 
     private boolean isLoggedIn(int id) {
         // get all logged in
-        ArrayList<Log> log = getLoggedIn();
+        ArrayList<Student> log = getLoggedIn();
 
         // check to make sure it was successful
         if (log == null) {
@@ -95,7 +95,7 @@ public class DBConnect {
             return true;
         } catch (Exception e) {
             // log
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Close Connection Error: " + e.getMessage());
 
             // return error
             return false;
@@ -129,7 +129,7 @@ public class DBConnect {
             return 1;
         } catch (Exception e) {
             // print error to console
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Log In Error: " + e.getMessage());
 
             // return error
             return 0;
@@ -163,7 +163,7 @@ public class DBConnect {
             return 1;
         } catch (Exception e) {
             // print error to console
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Log Out Error: " + e.getMessage());
 
             // return error
             return 0;
@@ -185,21 +185,22 @@ public class DBConnect {
             return true;
         } catch (Exception e) {
             // log error
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Register Error: " + e.getMessage());
 
             // return error
             return false;
         }
     }
 
-    public ArrayList<Log> getLoggedIn() {
-        // create an instance of an arraylist
+    public ArrayList<Student> getLoggedIn() {
+        // create an instance of two arraylists
         ArrayList<Log> records = new ArrayList<Log>();
+        ArrayList<Student> students = new ArrayList<Student>();
 
-        // attempt to request records from server
+        // attempt to request records and student from server
         try {
             // form query
-            String query = "SELECT * FROM loggedIn";
+            String query = "SELECT * FROM loggedIn;";
 
             // execute query
             resultSet = statement.executeQuery(query);
@@ -216,11 +217,46 @@ public class DBConnect {
                 records.add(record);
             }
 
+            // check to see if there are records
+            if (records.size() == 0)
+                return null;
+
+            // form query
+            query = "SELECT * FROM students WHERE";
+
+            // concatenate ids of students
+            for (int i = 0, length = records.size(); i < length; i++) {
+                if (i != length - 1)
+                    query += " id = '" + records.get(i).getId() + "' OR";
+                else
+                    query += " id = '" + records.get(i).getId() + "';";
+            }
+
+            // execute query
+            resultSet = statement.executeQuery(query);
+
+            // add students to arraylist
+            while(resultSet.next()) {
+                Student student = new Student();
+
+                // set fields
+                student.setId(resultSet.getInt("id"));
+                student.setStrId(resultSet.getString("strId"));
+                student.setFirstName(resultSet.getString("firstName"));
+                student.setLastName(resultSet.getString("lastName"));
+                student.setRegistered(resultSet.getTimestamp("registered"));
+                student.setSubject(resultSet.getString("subject"));
+                student.setProfessor(resultSet.getString("professor"));
+
+                // add record to list
+                students.add(student);
+            }
+
             // return list
-            return records;
+            return students;
         } catch (Exception e) {
             // print error to console
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("Get Logged In Error: " + e.getMessage());
 
             // return error
             return null;

@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 // used to create a student from students table
 public class Student {
     // fields
+    private int id;
     private String strId;
     private String firstName;
     private String lastName;
@@ -32,7 +33,13 @@ public class Student {
         setProfessor(student.getProfessor());
     }
 
+    // override to string method
+
     /* generated getters and setters */
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
+
     public String getStrId() {
         return strId;
     }
