@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="add alert message and register form">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_40_bin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/DBConnect.class" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/DBConnect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/LabLogController.class" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/LabLogController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/Main.class" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/RegisterController.class" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/RegisterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/tables/Student.class" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/tables/Student.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LabLog.iml" afterPath="$PROJECT_DIR$/LabLog.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LabLog/lablog/lablog.fxml" afterPath="$PROJECT_DIR$/out/production/LabLog/lablog/lablog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/DBConnect.java" afterPath="$PROJECT_DIR$/src/lablog/DBConnect.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/LabLogController.java" afterPath="$PROJECT_DIR$/src/lablog/LabLogController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/Main.java" afterPath="$PROJECT_DIR$/src/lablog/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/RegisterController.java" afterPath="$PROJECT_DIR$/src/lablog/RegisterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/lablog.fxml" afterPath="$PROJECT_DIR$/src/lablog/lablog.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/lablog/tables/Student.java" afterPath="$PROJECT_DIR$/src/lablog/tables/Student.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,8 +89,8 @@
       <file leaf-file-name="LabLogController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lablog/LabLogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="-60">
+              <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -648,7 +634,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/lablog/LabLogController.java</url>
-          <line>80</line>
+          <line>83</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
@@ -660,7 +646,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/lablog/LabLogController.java</url>
-          <line>46</line>
+          <line>49</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
@@ -1016,8 +1002,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lablog/LabLogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+        <state relative-caret-position="-60">
+          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

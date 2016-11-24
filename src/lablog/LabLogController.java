@@ -37,6 +37,9 @@ public class LabLogController {
     private static final int SIZE_ONE = 9;
     private static final int SIZE_TWO = 10;
 
+    // controller fields
+    Timer timer;
+
     // constructor
     LabLogController() {
     }
@@ -141,7 +144,11 @@ public class LabLogController {
         lblInfo.setTextFill(paint);
 
         // clear label after ten seconds
-        new Timer().schedule(
+        // check to see if something is scheduled
+        if (timer != null)
+            timer.cancel(); // cancel previous timer
+        timer = new Timer(); // make new one
+        timer.schedule(
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
