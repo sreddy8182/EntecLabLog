@@ -24,6 +24,7 @@ public class LabLogController {
     // views
     public ComboBox<String> lstStudents;
     public Button btnSubmit;
+    public Button btnLogOut;
     public TextField txtId;
     public Label lblInfo;
 
@@ -38,10 +39,17 @@ public class LabLogController {
     private static final int SIZE_TWO = 10;
 
     // controller fields
-    Timer timer;
+    private Timer timer;
+    private ArrayList<String> comboIds;
 
     // constructor
     LabLogController() {
+    }
+
+    // function to initialize controller
+    void init() {
+        // load combo box
+        loadLoggedIn();
     }
 
     // load logged in students
@@ -55,16 +63,23 @@ public class LabLogController {
             // make combo empty
             lstStudents.setItems(FXCollections.observableList(new ArrayList<String>(0)));
 
+            // make ids empty
+            comboIds = new ArrayList<String>(0);
+
             // return error
             return false;
         }
 
         // make list
         ArrayList<String> list = new ArrayList<>();
+        comboIds = new ArrayList<String>();
 
         // get all strId for every id
         for (int i = 0; i < students.size(); i++) {
             list.add(students.get(i).getFirstName() + " " + students.get(i).getLastName().charAt(0) + " - " + students.get(i).getStrId());
+
+            // also load ids into comboids
+            comboIds.add(students.get(i).getStrId());
         }
 
         // make observable list
@@ -272,6 +287,44 @@ public class LabLogController {
 
         // return success
         return true;
+    }
+
+    // action to perform when combo logout button is clicked
+    public void comboLogout() {
+        // if user has not selected a value show error
+        if (lstStudents.getValue() == null) {
+            infoMessage("Invalid Choice", Color.RED);
+
+            // end
+            return;
+        }
+
+        // get values
+        Object[] values = lstStudents.getItems().toArray(); // treat array as string
+
+        // get selected value
+        String value = lstStudents.getValue();
+
+        // look for index
+        int index = 0;
+
+        // iterate through each value
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].toString().equals(value))
+                index = i;
+        }
+
+        // log the student out
+        if (Main.dbConnect.logOut(comboIds.get(index)) == 1) {
+            // show logout confirmation
+            infoMessage("Logged out Successfully", Color.BLUE);
+
+            // reload combo box
+            loadLoggedIn();
+        } else {
+            // show logout confirmation
+            infoMessage("Database Error", Color.RED);
+        }
     }
 
     // action to perform on yes

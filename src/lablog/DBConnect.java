@@ -58,7 +58,7 @@ public class DBConnect {
 
     private void writeHistory(String strId, boolean type) throws SQLException {
         // form query
-        String query = "INSERT INTO `history` (`stuId`, `time`, `type`) VALUES ('" +
+        String query = "INSERT INTO `history` (`strId`, `time`, `type`) VALUES ('" +
                 strId + "', CURRENT_TIMESTAMP, '" + (type ? "1" : "0") + "');";
 
         // execute query

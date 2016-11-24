@@ -48,8 +48,8 @@ public class Main extends Application {
         // show the window
         window.show();
 
-        // load combo box
-        labLogController.loadLoggedIn();
+        // initialize controller
+        labLogController.init();
     }
 
     public static void main(String[] args) {
