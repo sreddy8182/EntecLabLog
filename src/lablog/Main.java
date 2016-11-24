@@ -1,5 +1,6 @@
 package lablog;
 
+import com.guigarage.flatterfx.FlatterFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -50,6 +51,9 @@ public class Main extends Application {
 
         // initialize controller
         labLogController.init();
+
+        // style form
+        FlatterFX.style();
     }
 
     public static void main(String[] args) {
