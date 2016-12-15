@@ -5,7 +5,7 @@ package lablog;
  */
 public class Config {
     // static fields
-    public static String Url = "jdbc:mysql://104.236.200.127:3306/lablog";
+    public static String Url = "jdbc:mysql://giovani-rodriguez.com:3306/lablog";
     public static String User = "lablog";
     public static String Password = "1995giox1";
 }

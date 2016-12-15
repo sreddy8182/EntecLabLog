@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LabLog:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LabLog_jar</output-path>
+    <root id="archive" name="LabLog.jar">
+      <element id="module-output" name="LabLog" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libraries/mysql-connector-java-5.1.40-bin.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/libraries/flatter-0.7.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

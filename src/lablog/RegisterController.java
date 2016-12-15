@@ -84,6 +84,9 @@ public class RegisterController {
 
         // set it to the stage
         Main.window.setScene(new Scene(layout, 335, 415));
+
+        // refresh the list in combo box
+        Main.labLogController.loadLoggedIn();
     }
 
     // check if string has all letters

@@ -5,15 +5,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    // rename stage to window
-    static Stage window;
-    static LabLogController labLogController;
-
-    // fields
-    static DBConnect dbConnect;
+    static Stage window; // rename stage to window
+    static LabLogController labLogController; // make a lab controller
+    static DBConnect dbConnect; // make a db connection object
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -22,6 +20,9 @@ public class Main extends Application {
 
         // hold reference to main stage
         window = primaryStage;
+
+        // set icon for the stage
+        window.getIcons().add(new Image(getClass().getResourceAsStream("res/logo_log.png")));
 
         // create instance of controller
         labLogController = new LabLogController();
@@ -37,7 +38,8 @@ public class Main extends Application {
         window.setTitle("Entec Lab Log");
 
         // give window a scene
-        window.setScene(new Scene(layout, 335, 415));
+        Scene scene = new Scene(layout, 335, 415);
+        window.setScene(scene);
 
         // settings
         window.setResizable(false);
@@ -53,7 +55,7 @@ public class Main extends Application {
         labLogController.init();
 
         // style form
-        FlatterFX.style();
+        // FlatterFX.style();
     }
 
     public static void main(String[] args) {

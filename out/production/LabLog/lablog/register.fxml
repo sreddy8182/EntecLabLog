@@ -77,7 +77,7 @@
             <Insets bottom="20.0" />
          </GridPane.margin>
          <image>
-            <Image url="@add_student.png" />
+            <Image url="@res/add_student.png" />
          </image>
       </ImageView>
       <Button fx:id="btnCancel" mnemonicParsing="false" prefWidth="105.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="11">
