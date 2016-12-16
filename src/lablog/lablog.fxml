@@ -33,7 +33,7 @@
             <Insets bottom="20.0" />
          </GridPane.margin>
          <image>
-            <Image url="@logo.png" />
+            <Image url="@res/logo.png" />
          </image></ImageView>
       <Label text="Student ID:" GridPane.rowIndex="1" />
       <TextField fx:id="txtId" maxWidth="170.0" onAction="#logStudent" prefHeight="27.0" prefWidth="170.0" GridPane.rowIndex="2" />

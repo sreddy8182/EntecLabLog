@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" prefHeight="415.0" prefWidth="335.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.rowSpan="5" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <TextField GridPane.columnIndex="1" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+   </children>
+</GridPane>
